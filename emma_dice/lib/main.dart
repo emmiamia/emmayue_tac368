@@ -1,122 +1,171 @@
-import 'package:flutter/material.dart';
+// Dice.dart
 
-void main() {
-  runApp(const MyApp());
+// Emma Yue
+
+import "package:flutter/material.dart";
+import 'dart:math';
+
+void main() // 23
+{
+  runApp(Yahtzee());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Yahtzee extends StatelessWidget
+{
+  const Yahtzee({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+  Widget build( BuildContext context )
+  { return const MaterialApp
+    ( title: "Yahtzee",
+      home: YahtzeeHome(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class YahtzeeHome extends StatefulWidget
+{
+  const YahtzeeHome({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<YahtzeeHome> createState() => YahtzeeHomeState();
 }
+    
+class YahtzeeHomeState extends State<YahtzeeHome>
+{
+  final Random rand = Random();
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
+  List<int> dice = [1, 1, 1, 1, 1];
+  List<bool> held = [false, false, false, false, false];
+  void rollDice() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      for (int i = 0; i < 5; i++) {
+        if (!held[i]) {
+          dice[i] = rand.nextInt(6) + 1;
+        }
+      }
     });
   }
 
+  void flipHold(int i) {
+    setState(() {
+      held[i] = !held[i];
+    });
+  }
+
+  String face(int v) {
+    const f = [1, 2, 3, 4, 5, 6];
+    return f[v-1].toString();
+  }
+  
   @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: .center,
-          children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+  Widget build( BuildContext context )
+  { return Scaffold
+    ( appBar: AppBar(title: const Text("yahtzee")),
+      body: Column
+      ( children:
+        [ const Text
+          ( "YAHTZEE", 
+            style: TextStyle
+            ( fontSize: 35,
+              color: Colors.orange,
+            ) 
+          ),
+          const SizedBox(height: 12),
+
+          const Text
+          ( "Press ROLL. Tap HOLD to keep dice.",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ), 
+          ),
+          const SizedBox(height: 18),
+
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.pink,
+              border: Border.all(width: 8),
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              children: [
+                // dice row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(5, (i) {
+                    return Container(
+                      margin: const EdgeInsets.all(6),
+                      width: 45,
+                      height: 45,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        // ONLY modifying purpose: held dice look different
+                        color: held[i] ? Colors.grey : Colors.white,
+                        border: Border.all(width: 2),
+                      ),
+                      child: Text(
+                        face(dice[i]),
+                        style: const TextStyle(fontSize: 22),
+                      ),
+                    );
+                  }),
+                ),
+
+                // hold buttons row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(5, (i) {
+                    return TextButton(
+                      onPressed: () => flipHold(i),
+                      child: Text(held[i] ? "FREE" : "HOLD"),
+                    );
+                  }),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 18),
+
+          GestureDetector(
+            onTap: rollDice,
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(width: 1),
+              ),
+              height: 100,
+              width: 100,
+              child: Stack(
+                children: [
+                  const Positioned(
+                    left: 18,
+                    top: 38,
+                    child: Text(
+                      "ROLL",
+                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  // keep your dot, just as decoration
+                  Positioned(
+                    left: 80,
+                    top: 70,
+                    child: Container(
+                      height: 10,
+                      width: 10,
+                      decoration: const BoxDecoration(
+                        color: Colors.black,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ]
       ),
     );
   }
 }
+
