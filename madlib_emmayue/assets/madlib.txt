@@ -1,0 +1,2 @@
+When I was in $place, I bought a pet $animal.
+I traded $number $thing to get the %1.
