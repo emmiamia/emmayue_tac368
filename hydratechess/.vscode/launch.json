@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "hydratechess",
+      "request": "launch",
+      "type": "dart",
+      "args": ["--web-port", "8080", "--web-hostname", "localhost"]
+    },
+    {
+      "name": "hydratechess (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "args": ["--web-port", "8080", "--web-hostname", "localhost"]
+    },
+    {
+      "name": "hydratechess (release mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "args": ["--web-port", "8080", "--web-hostname", "localhost"]
+    }
+  ]
+}
