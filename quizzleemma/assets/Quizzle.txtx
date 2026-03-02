@@ -1,0 +1,26 @@
+Quizzle (for TAC-368)
+
+Write a Flutter program that reads a file of question-answer pairs and gives 
+the user a quiz.  
+
+Details:
+-- The file format is one line per question and answer pair, question 
+   followed by answer, separated by a comma, except that the first line is the 
+   names of the things being asked.  For example "state,capital" could the 
+   first line, and then other lines would be "California,Sacramento", 
+   "Ohio,Columbus", etc.   (See data file given with assignment.)  Note 
+   that the questions and answers may have spaces, but not commas.  
+-- When the user answers a question, there should be feedback before 
+   moving on (say whether the answer was right or wrong, and if it was wrong, 
+   say what the right answer is).  
+-- This could be done with a "check answer" button and a 
+   "next question" button, something like that.  We can discuss layout and 
+   flow in class if you want to.
+-- You should display the score, how many right from the total.  
+   Update it after every answer.
+-- So that I can test all of your programs uniformly, let's do 
+   this with bundled files.  Put the two data files that I am giving you 
+   in a folder called "assets" (at the same level as /lib in your project).  
+   You should give the user a choice of which file to be quizzed on. 
+-- Format can be multiple choice or fill in the blank.   You can 
+   get 5 extra points if you do them both.
