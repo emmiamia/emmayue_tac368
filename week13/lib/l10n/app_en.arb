@@ -1,0 +1,5 @@
+{
+  "appTitle": "My App",
+  "helloWorld": "Hello World",
+  "counterMessage": "You clicked {count} times"
+}

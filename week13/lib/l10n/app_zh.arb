@@ -1,0 +1,5 @@
+{
+  "appTitle": "我的应用",
+  "helloWorld": "你好，世界",
+  "counterMessage": "你点击了 {count} 次"
+}
