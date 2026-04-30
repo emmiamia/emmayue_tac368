@@ -2,19 +2,15 @@ import 'dart:math';
 
 import 'package:flutter/services.dart' show rootBundle;
 
-/// Loads bundled word banks from [assets/words/words.txt] (5-letter) and
-/// [assets/words/words_varlen.txt] (4-, 6-, 7-letter, etc.).
 class WordList {
   WordList();
 
-  /// Inclusive bounds for random puzzle length each game.
   static const int puzzleMinLength = 4;
   static const int puzzleMaxLength = 7;
 
   final Map<int, Set<String>> _byLength = {};
   bool _loaded = false;
 
-  /// Lengths that have at least one word (used to pick puzzle size per game).
   Set<int> get availableLengths {
     return _byLength.entries
         .where((e) => e.value.isNotEmpty)
@@ -22,7 +18,6 @@ class WordList {
         .toSet();
   }
 
-  /// Lengths in [puzzleMinLength]–[puzzleMaxLength] that exist in the bank.
   Set<int> get puzzleEligibleLengths {
     return availableLengths
         .where((l) => l >= puzzleMinLength && l <= puzzleMaxLength)
