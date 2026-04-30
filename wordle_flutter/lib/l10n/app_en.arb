@@ -1,0 +1,47 @@
+{
+  "@@locale": "en",
+  "appTitle": "WORDLE",
+  "statisticsTitle": "Statistics",
+  "splashSubtitle": "Loading…",
+  "messageNotEnoughLetters": "Not enough letters",
+  "messageNotInWordList": "Not in word list",
+  "winDialogTitle": "Splendid",
+  "winDialogBody": "You solved it in {count} tries. Current streak: {streak}.",
+  "@winDialogBody": {
+    "placeholders": {
+      "count": {"type": "int"},
+      "streak": {"type": "int"}
+    }
+  },
+  "loseDialogTitle": "Nice try",
+  "loseDialogBody": "The word was {word}.",
+  "@loseDialogBody": {
+    "placeholders": {
+      "word": {"type": "String"}
+    }
+  },
+  "playAgain": "Play again",
+  "close": "Close",
+  "statsPlayed": "Played",
+  "statsWinPercent": "Win %",
+  "statsStreak": "Streak",
+  "statsBest": "Best",
+  "guessDistribution": "Guess distribution",
+  "recentGames": "Recent games",
+  "historyWin": "Win",
+  "historyLoss": "Loss",
+  "historyAttempts": "{count} tries",
+  "@historyAttempts": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "toggleTheme": "Toggle brightness",
+  "language": "Language",
+  "languageEnglish": "English",
+  "languageChinese": "中文",
+  "newGame": "New game",
+  "revealAnswer": "Reveal answer",
+  "revealForfeitTitle": "Reveal and forfeit?",
+  "revealForfeitBody": "The answer will be filled in and this game will count as a loss."
+}

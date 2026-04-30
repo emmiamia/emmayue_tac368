@@ -1,0 +1,47 @@
+{
+  "@@locale": "zh",
+  "appTitle": "猜词",
+  "statisticsTitle": "统计",
+  "splashSubtitle": "加载中…",
+  "messageNotEnoughLetters": "字母不够",
+  "messageNotInWordList": "不在词表中",
+  "winDialogTitle": "太棒了",
+  "winDialogBody": "你在 {count} 次内猜中了！当前连胜：{streak}。",
+  "@winDialogBody": {
+    "placeholders": {
+      "count": {"type": "int"},
+      "streak": {"type": "int"}
+    }
+  },
+  "loseDialogTitle": "再接再厉",
+  "loseDialogBody": "答案是 {word}。",
+  "@loseDialogBody": {
+    "placeholders": {
+      "word": {"type": "String"}
+    }
+  },
+  "playAgain": "再玩一局",
+  "close": "关闭",
+  "statsPlayed": "局数",
+  "statsWinPercent": "胜率",
+  "statsStreak": "连胜",
+  "statsBest": "最佳",
+  "guessDistribution": "猜测次数分布",
+  "recentGames": "最近对局",
+  "historyWin": "胜",
+  "historyLoss": "负",
+  "historyAttempts": "{count} 次",
+  "@historyAttempts": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "toggleTheme": "切换明暗主题",
+  "language": "语言",
+  "languageEnglish": "English",
+  "languageChinese": "中文",
+  "newGame": "新游戏",
+  "revealAnswer": "看答案",
+  "revealForfeitTitle": "看答案并认输？",
+  "revealForfeitBody": "会显示正确答案，本局将计为失败。"
+}
